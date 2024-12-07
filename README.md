@@ -39,5 +39,5 @@ Then run the following command:
 cookiecutter \
   --output-dir=./outputs \
   --directory=nautobot-app \
-  https://github.com/nautobot/cookiecutter-nautobot-app
+  https://github.com/grahamjohnston/nautobot-app-template
 ```
