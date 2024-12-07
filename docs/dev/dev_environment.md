@@ -14,7 +14,7 @@ This is a quick reference guide if you're already familiar with the development 
 The [Invoke](http://www.pyinvoke.org/) library is used to provide some helper commands based on the environment. There are a few configuration parameters which can be passed to Invoke to override the default configuration:
 
 - `project_name`: the default docker compose project name (default: `cookiecutter-nautobot-app`)
-- `python_ver`: the version of Python to use as a base for any built docker containers (default: 3.11)
+- `python_ver`: the version of Python to use as a base for any built docker containers (default: 3.12)
 - `local`: a boolean flag indicating if invoke tasks should be run on the host or inside the docker containers (default: True, commands will be run the host)
 - `compose_dir`: the full path to a directory containing the project compose files
 - `compose_files`: a list of compose files applied in order (see [Multiple Compose files](https://docs.docker.com/compose/extends/#multiple-compose-files) for more information)
@@ -25,7 +25,7 @@ Using **Invoke** these configuration options can be overridden using [several me
 ### Local Poetry Development Environment
 
 !!! tip
-    This is the recommended option for development.
+This is the recommended option for development.
 
 Run the following commands:
 
@@ -135,13 +135,13 @@ The first thing you need to do is build the necessary development container imag
 #15 [cookiecutter] exporting to image
 #15 exporting layers 1.1s done
 #15 writing image sha256:85627092abfb1f9abca3faf4990dfd413028bb6a55140125a50386776b9749c2 done
-#15 naming to docker.io/library/cookiecutter-nautobot-app:3.11 done
+#15 naming to docker.io/library/cookiecutter-nautobot-app:3.12 done
 #15 DONE 1.1s
 ```
 
 ### Invoke - Using Development Container
 
-The development containers are used for running tests & linters. 
+The development containers are used for running tests & linters.
 
 ```bash
 ➜ invoke tests
@@ -213,7 +213,7 @@ Now you can start developing your app in the project folder!
 The magic here is the root directory is mounted inside your Docker containers when built and ran, so **any** changes made to the files in here are directly updated to the Nautobot app code running in Docker. This means that as you modify the code in your app folder, the changes will be instantly updated in Nautobot.
 
 !!! warning
-	There are a few exceptions to this, as outlined in the section [To Rebuild or Not To Rebuild](#to-rebuild-or-not-to-rebuild).
+There are a few exceptions to this, as outlined in the section [To Rebuild or Not To Rebuild](#to-rebuild-or-not-to-rebuild).
 
 ### Docker Logs
 
@@ -224,10 +224,10 @@ When trying to debug an issue, one helpful thing you can look at are the logs wi
 ```
 
 !!! note
-	The `-f` tag will keep the logs open, and output them in realtime as they are generated.
+The `-f` tag will keep the logs open, and output them in realtime as they are generated.
 
 !!! info
-    Want to limit the log output even further? Use the `--tail <#>` command line argument in conjunction with `-f`.
+Want to limit the log output even further? Use the `--tail <#>` command line argument in conjunction with `-f`.
 
 So for example, our compose project is named `cookiecutter-nautobot-app`, the command would most likely be `docker logs cookiecutter-nautobot-app_cookiecutter_1 -f`. You can find the name of all running containers via `docker ps`.
 
@@ -280,7 +280,7 @@ namespace.configure(
     {
         "cookiecutter_nautobot_app": {
             ...
-            "python_ver": "3.11",
+            "python_ver": "3.12",
 	    ...
         }
     }

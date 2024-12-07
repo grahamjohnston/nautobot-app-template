@@ -21,28 +21,28 @@ cookiecutter https://github.com/nautobot/cookiecutter-nautobot-app.git --directo
 Output:
 
 ```shell
-You've downloaded ~/.cookiecutters/cookiecutter-nautobot-app before. Is it okay to delete and re-download it? [y/n] (y): 
+You've downloaded ~/.cookiecutters/cookiecutter-nautobot-app before. Is it okay to delete and re-download it? [y/n] (y):
   [1/18] codeowner_github_usernames (): @smith-ntc
-  [2/18] full_name (Network to Code, LLC): 
-  [3/18] email (info@networktocode.com): 
-  [4/18] github_org (nautobot): 
-  [5/18] app_name (my_app): 
-  [6/18] verbose_name (My App): 
-  [7/18] app_slug (my-app): 
-  [8/18] project_slug (nautobot-app-my-app): 
-  [9/18] repo_url (https://github.com/nautobot/nautobot-app-my-app): 
-  [10/18] base_url (my-app): 
-  [11/18] min_nautobot_version (2.0.0): 
-  [12/18] max_nautobot_version (2.9999): 
-  [13/18] camel_name (MyApp): 
-  [14/18] project_short_description (My App): 
-  [15/18] model_class_name (None): 
+  [2/18] full_name (Network to Code, LLC):
+  [3/18] email (info@networktocode.com):
+  [4/18] github_org (nautobot):
+  [5/18] app_name (my_app):
+  [6/18] verbose_name (My App):
+  [7/18] app_slug (my-app):
+  [8/18] project_slug (nautobot-app-my-app):
+  [9/18] repo_url (https://github.com/nautobot/nautobot-app-my-app):
+  [10/18] base_url (my-app):
+  [11/18] min_nautobot_version (2.3.12):
+  [12/18] max_nautobot_version (2.9999):
+  [13/18] camel_name (MyApp):
+  [14/18] project_short_description (My App):
+  [15/18] model_class_name (None):
   [16/18] Select open_source_license
     1 - Apache-2.0
     2 - Not open source
-    Choose from [1/2] (1): 
-  [17/18] docs_base_url (https://docs.nautobot.com): 
-  [18/18] docs_app_url (https://docs.nautobot.com/projects/my-app/en/latest): 
+    Choose from [1/2] (1):
+  [17/18] docs_base_url (https://docs.nautobot.com):
+  [18/18] docs_app_url (https://docs.nautobot.com/projects/my-app/en/latest):
 
 Congratulations! Your cookie has now been baked. It is located at /tmp/nautobot-app-my-app
 
@@ -123,30 +123,30 @@ First create the `my-app.json` file:
 
 ```json
 {
-    "cookiecutter": {
-        "codeowner_github_usernames": "@smith-ntc",
-        "full_name": "Network to Code, LLC",
-        "email": "info@networktocode.com",
-        "github_org": "nautobot",
-        "app_name": "my_app",
-        "verbose_name": "My App",
-        "app_slug": "my-app",
-        "project_slug": "nautobot-app-my-app",
-        "repo_url": "https://github.com/nautobot/nautobot-app-my-app",
-        "base_url": "my-app",
-        "min_nautobot_version": "2.0.0",
-        "max_nautobot_version": "2.9999",
-        "camel_name": "MyApp",
-        "project_short_description": "My App",
-        "model_class_name": "None",
-        "open_source_license": "Apache-2.0",
-        "docs_base_url": "https://docs.nautobot.com",
-        "docs_app_url": "https://docs.nautobot.com/projects/my-app/en/latest",
-        "_template": "git@github.com:nautobot/cookiecutter-nautobot-app.git",
-        "_output_dir": "/tmp",
-        "_repo_dir": "~/.cookiecutters/cookiecutter-nautobot-app/nautobot-app",
-        "_checkout": null
-    }
+  "cookiecutter": {
+    "codeowner_github_usernames": "@smith-ntc",
+    "full_name": "Network to Code, LLC",
+    "email": "info@networktocode.com",
+    "github_org": "nautobot",
+    "app_name": "my_app",
+    "verbose_name": "My App",
+    "app_slug": "my-app",
+    "project_slug": "nautobot-app-my-app",
+    "repo_url": "https://github.com/nautobot/nautobot-app-my-app",
+    "base_url": "my-app",
+    "min_nautobot_version": "2.3.12",
+    "max_nautobot_version": "2.9999",
+    "camel_name": "MyApp",
+    "project_short_description": "My App",
+    "model_class_name": "None",
+    "open_source_license": "Apache-2.0",
+    "docs_base_url": "https://docs.nautobot.com",
+    "docs_app_url": "https://docs.nautobot.com/projects/my-app/en/latest",
+    "_template": "git@github.com:nautobot/cookiecutter-nautobot-app.git",
+    "_output_dir": "/tmp",
+    "_repo_dir": "~/.cookiecutters/cookiecutter-nautobot-app/nautobot-app",
+    "_checkout": null
+  }
 }
 ```
 
@@ -159,7 +159,7 @@ cookiecutter https://github.com/nautobot/cookiecutter-nautobot-app.git --directo
 Output:
 
 ```shell
-You've downloaded ~/.cookiecutters/cookiecutter-nautobot-app before. Is it okay to delete and re-download it? [y/n] (y): 
+You've downloaded ~/.cookiecutters/cookiecutter-nautobot-app before. Is it okay to delete and re-download it? [y/n] (y):
 
 Congratulations! Your cookie has now been baked. It is located at /tmp/nautobot-app-my-app
 

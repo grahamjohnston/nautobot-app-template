@@ -15,7 +15,7 @@ The [Invoke](http://www.pyinvoke.org/) library is used to provide some helper co
 
 - `nautobot_ver`: the version of Nautobot to use as a base for any built docker containers (default: {{ cookiecutter.min_nautobot_version }})
 - `project_name`: the default docker compose project name (default: `{{ cookiecutter.app_slug }}`)
-- `python_ver`: the version of Python to use as a base for any built docker containers (default: 3.11)
+- `python_ver`: the version of Python to use as a base for any built docker containers (default: 3.12)
 - `local`: a boolean flag indicating if invoke tasks should be run on the host or inside the docker containers (default: False, commands will be run in docker containers)
 - `compose_dir`: the full path to a directory containing the project compose files
 - `compose_files`: a list of compose files applied in order (see [Multiple Compose files](https://docs.docker.com/compose/extends/#multiple-compose-files) for more information)
@@ -25,7 +25,7 @@ Using **Invoke** these configuration options can be overridden using [several me
 ### Docker Development Environment
 
 !!! tip
-    This is the recommended option for development.
+This is the recommended option for development.
 
 This project is managed by [Python Poetry](https://python-poetry.org/) and has a few requirements to setup your development environment:
 
@@ -56,7 +56,7 @@ To either stop or destroy the development environment use the following options.
 
 ```yaml
 ---
-{{ cookiecutter.app_name }}:
+{ { cookiecutter.app_name } }:
   local: true
 ```
 
@@ -72,7 +72,7 @@ nautobot-server migrate
 ```
 
 !!! note
-    If you want to develop on the latest develop branch of Nautobot, run the following command: `poetry add --optional git+https://github.com/nautobot/nautobot@develop`. After the `@` symbol must match either a branch or a tag.
+If you want to develop on the latest develop branch of Nautobot, run the following command: `poetry add --optional git+https://github.com/nautobot/nautobot@develop`. After the `@` symbol must match either a branch or a tag.
 
 You can now run `nautobot-server` commands as you would from the [Nautobot documentation](https://docs.nautobot.com/projects/core/en/stable/user-guide/administration/tools/nautobot-server/) for example to start the development server:
 
@@ -131,12 +131,12 @@ Each command can be executed with `invoke <command>`. All commands support the a
 
 ## Project Overview
 
-This project provides the ability to develop and manage the Nautobot server locally (with supporting services being *Dockerized*) or by using only Docker containers to manage Nautobot. The main difference between the two environments is the ability to debug and use **pdb** when developing locally. Debugging with **pdb** within the Docker container is more complicated, but can still be accomplished by either entering into the container (via `docker exec`) or attaching your IDE to the container and running the Nautobot service manually within the container.
+This project provides the ability to develop and manage the Nautobot server locally (with supporting services being _Dockerized_) or by using only Docker containers to manage Nautobot. The main difference between the two environments is the ability to debug and use **pdb** when developing locally. Debugging with **pdb** within the Docker container is more complicated, but can still be accomplished by either entering into the container (via `docker exec`) or attaching your IDE to the container and running the Nautobot service manually within the container.
 
 The upside to having the Nautobot service handled by Docker rather than locally is that you do not have to manage the Nautobot server. The [Docker logs](#docker-logs) provide the majority of the information you will need to help troubleshoot, while getting started quickly and not requiring you to perform several manual steps and remembering to have the Nautobot server running in a separate terminal while you develop.
 
 !!! note
-	The local environment still uses Docker containers for the supporting services (Postgres, Redis, and RQ Worker), but the Nautobot server is handled locally by you, the developer.
+The local environment still uses Docker containers for the supporting services (Postgres, Redis, and RQ Worker), but the Nautobot server is handled locally by you, the developer.
 
 Follow the directions below for the specific development environment that you choose.
 
@@ -177,7 +177,7 @@ The first thing you need to do is build the necessary Docker image for Nautobot 
 #14 exporting layers
 #14 exporting layers 1.2s done
 #14 writing image sha256:2d524bc1665327faa0d34001b0a9d2ccf450612bf8feeb969312e96a2d3e3503 done
-#14 naming to docker.io/{{ cookiecutter.app_slug }}/nautobot:{{ cookiecutter.min_nautobot_version }}-py3.11 done
+#14 naming to docker.io/{{ cookiecutter.app_slug }}/nautobot:{{ cookiecutter.min_nautobot_version }}-py3.12 done
 ```
 
 ### Invoke - Starting the Development Environment
@@ -208,9 +208,9 @@ This will start all of the Docker containers used for hosting Nautobot. You shou
 ```bash
 ➜ docker ps
 ****CONTAINER ID   IMAGE                            COMMAND                  CREATED          STATUS          PORTS                                       NAMES
-ee90fbfabd77   {{ cookiecutter.app_slug }}/nautobot:{{ cookiecutter.min_nautobot_version }}-py3.11  "nautobot-server rqw…"   16 seconds ago   Up 13 seconds                                               {{ cookiecutter.app_name }}_worker_1
-b8adb781d013   {{ cookiecutter.app_slug }}/nautobot:{{ cookiecutter.min_nautobot_version }}-py3.11  "/docker-entrypoint.…"   20 seconds ago   Up 15 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   {{ cookiecutter.app_name }}_nautobot_1
-d64ebd60675d   {{ cookiecutter.app_slug }}/nautobot:{{ cookiecutter.min_nautobot_version }}-py3.11  "mkdocs serve -v -a …"   25 seconds ago   Up 18 seconds   0.0.0.0:8001->8080/tcp, :::8001->8080/tcp   {{ cookiecutter.app_name }}_docs_1
+ee90fbfabd77   {{ cookiecutter.app_slug }}/nautobot:{{ cookiecutter.min_nautobot_version }}-py3.12  "nautobot-server rqw…"   16 seconds ago   Up 13 seconds                                               {{ cookiecutter.app_name }}_worker_1
+b8adb781d013   {{ cookiecutter.app_slug }}/nautobot:{{ cookiecutter.min_nautobot_version }}-py3.12  "/docker-entrypoint.…"   20 seconds ago   Up 15 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   {{ cookiecutter.app_name }}_nautobot_1
+d64ebd60675d   {{ cookiecutter.app_slug }}/nautobot:{{ cookiecutter.min_nautobot_version }}-py3.12  "mkdocs serve -v -a …"   25 seconds ago   Up 18 seconds   0.0.0.0:8001->8080/tcp, :::8001->8080/tcp   {{ cookiecutter.app_name }}_docs_1
 e72d63129b36   postgres:13-alpine               "docker-entrypoint.s…"   25 seconds ago   Up 19 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   {{ cookiecutter.app_name }}_postgres_1
 96c6ff66997c   redis:6-alpine                   "docker-entrypoint.s…"   25 seconds ago   Up 21 seconds   0.0.0.0:6379->6379/tcp, :::6379->6379/tcp   {{ cookiecutter.app_name }}_redis_1
 ```
@@ -221,7 +221,7 @@ Once the containers are fully up, you should be able to open up a web browser, a
 - A live version of the documentation at [http://localhost:8001](http://localhost:8001)
 
 !!! note
-	Sometimes the containers take a minute to fully spin up. If the page doesn't load right away, wait a minute and try again.
+Sometimes the containers take a minute to fully spin up. If the page doesn't load right away, wait a minute and try again.
 
 ### Invoke - Creating a Superuser
 
@@ -232,7 +232,7 @@ The Nautobot development image will automatically provision a super user when sp
 - `NAUTOBOT_SUPERUSER_PASSWORD=admin`
 
 !!! note
-	The default username is **admin**, but can be overridden by specifying **NAUTOBOT_SUPERUSER_USERNAME**.
+The default username is **admin**, but can be overridden by specifying **NAUTOBOT_SUPERUSER_USERNAME**.
 
 If you need to create additional superusers, run the follow commands.
 
@@ -282,7 +282,7 @@ Removing network {{ cookiecutter.app_name }}_default
 This will safely shut down all of your running Docker containers for this project. When you are ready to spin containers back up, it is as simple as running `invoke start` again [as seen previously](#invoke-starting-the-development-environment).
 
 !!! warning
-	If you're wanting to reset the database and configuration settings, you can use the `invoke destroy` command, but **you will lose any data stored in those containers**, so make sure that is what you want to do.
+If you're wanting to reset the database and configuration settings, you can use the `invoke destroy` command, but **you will lose any data stored in those containers**, so make sure that is what you want to do.
 
 ### Real-Time Updates? How Cool!
 
@@ -293,12 +293,12 @@ Now you can start developing your app in the project folder!
 The magic here is the root directory is mounted inside your Docker containers when built and ran, so **any** changes made to the files in here are directly updated to the Nautobot app code running in Docker. This means that as you modify the code in your app folder, the changes will be instantly updated in Nautobot.
 
 !!! warning
-	There are a few exceptions to this, as outlined in the section [To Rebuild or Not To Rebuild](#to-rebuild-or-not-to-rebuild).
+There are a few exceptions to this, as outlined in the section [To Rebuild or Not To Rebuild](#to-rebuild-or-not-to-rebuild).
 
 The back-end Django process is setup to automatically reload itself (it only takes a couple of seconds) every time a file is updated (saved). So for example, if you were to update one of the files like `tables.py`, then save it, the changes will be visible right away in the web browser!
 
 !!! note
-	You may get connection refused while Django reloads, but it should be refreshed fairly quickly.
+You may get connection refused while Django reloads, but it should be refreshed fairly quickly.
 
 ### Docker Logs
 
@@ -309,10 +309,10 @@ When trying to debug an issue, one helpful thing you can look at are the logs wi
 ```
 
 !!! note
-	The `-f` tag will keep the logs open, and output them in realtime as they are generated.
+The `-f` tag will keep the logs open, and output them in realtime as they are generated.
 
 !!! info
-    Want to limit the log output even further? Use the `--tail <#>` command line argument in conjunction with `-f`.
+Want to limit the log output even further? Use the `--tail <#>` command line argument in conjunction with `-f`.
 
 So for example, our app is named `{{ cookiecutter.app_slug }}`, the command would most likely be `docker logs {{ cookiecutter.app_name }}_nautobot_1 -f`. You can find the name of all running containers via `docker ps`.
 
@@ -377,7 +377,7 @@ Before you continue, you'll need to update the file `development/nautobot_config
 Once the containers are up and running, you should now see the new app installed in your Nautobot instance.
 
 !!! note
-    You can even launch an `ngrok` service locally on your laptop, pointing to port 8080 (such as for chatops development), and it will point traffic directly to your Docker images.
+You can even launch an `ngrok` service locally on your laptop, pointing to port 8080 (such as for chatops development), and it will point traffic directly to your Docker images.
 
 ### Updating Python Version
 
@@ -389,7 +389,7 @@ namespace.configure(
     {
         "{{ cookiecutter.app_name }}": {
             ...
-            "python_ver": "3.11",
+            "python_ver": "3.12",
 	    ...
         }
     }
