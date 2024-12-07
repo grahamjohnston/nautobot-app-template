@@ -50,7 +50,7 @@ namespace.configure(
     {
         "cookiecutter_nautobot_app": {
             "project_name": "cookiecutter-nautobot-app",
-            "python_ver": "3.11",
+            "python_ver": "3.12",
             "local": "True",
             "compose_dir": os.path.join(os.path.dirname(__file__), "development"),
             "compose_files": [
@@ -116,7 +116,9 @@ def docker_compose(context, command, **kwargs):
     ]
 
     for compose_file in context.cookiecutter_nautobot_app.compose_files:
-        compose_file_path = os.path.join(context.cookiecutter_nautobot_app.compose_dir, compose_file)
+        compose_file_path = os.path.join(
+            context.cookiecutter_nautobot_app.compose_dir, compose_file
+        )
         compose_command_tokens.append(f' -f "{compose_file_path}"')
 
     compose_command_tokens.append(command)
@@ -219,7 +221,9 @@ def restart(context, service=""):
 def stop(context, service=""):
     """Stop specified or all services, if service is not specified, remove all containers."""
     print("Stopping container...")
-    docker_compose(context, "stop" if service else "down --remove-orphans", service=service)
+    docker_compose(
+        context, "stop" if service else "down --remove-orphans", service=service
+    )
 
 
 @task(
@@ -459,7 +463,14 @@ def tests(context, failfast=False, lint_only=False):
         "template": "Path to the cookiecutter template to bake (defaults to ./nautobot-app)",
     },
 )
-def bake(context, _debug=False, _input=True, json_file="", output_dir="./outputs", template="./nautobot-app"):
+def bake(
+    context,
+    _debug=False,
+    _input=True,
+    json_file="",
+    output_dir="./outputs",
+    template="./nautobot-app",
+):
     """Bake a new cookie from the template."""
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
